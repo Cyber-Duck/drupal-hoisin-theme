@@ -1,0 +1,21 @@
+core: 8.x
+type: theme
+base theme: false
+
+name: 'Hoisin'
+description: 'Hoisin is a very simple responsive front end mini framework made to kick start your web project, written in Sass.'
+package: 'Hoisin'
+
+regions:
+  header: 'Header'
+  main_nav: 'Main menu'
+  banner: 'Banner'
+  breadcrumb: 'Breadcrumbs'
+  content: 'Content'
+  footer: 'Footer'
+
+libraries:
+  - se/global-styling
+
+  # Information added by Drupal.org packaging script on 2019-11-22
+version: '8.x-0.01'

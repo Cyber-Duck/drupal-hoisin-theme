@@ -1,0 +1,9 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/style.css: { preprocess: false, minified: true }
+      css/print.css: { media: print, preprocess: false, minified: true }
+      css/ie.css: { preprocess: false, minified: true, browsers: { IE: 'lte IE 9', '!IE': false } }
+  js:
+    js/min/scripts.js: { preprocess: false, minified: true }
