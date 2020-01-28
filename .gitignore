@@ -3,3 +3,4 @@ public
 reports
 .gulp
 .DS_Store
+*.map

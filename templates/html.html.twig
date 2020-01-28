@@ -1,0 +1,117 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - css: A list of CSS files for the current page.
+ * - head: Markup for the HEAD element (including meta tags, keyword tags, and
+ *   so on).
+ * - head_title: A modified version of the page title, for use in the TITLE tag.
+ * - head_title_array: List of text elements that make up the head_title
+ *   variable. May contain or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - styles: Style tags necessary to import all necessary CSS files in the head.
+ * - scripts: Script tags necessary to load the JavaScript files and settings
+ *   in the head.
+ * - db_offline: A flag indicating if the database is offline.
+ *
+ * @see template_preprocess_html()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<!DOCTYPE html>
+<html{{html_attributes}}>
+    <head>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <meta name="application-name" content="Sport England">
+        <meta name="msapplication-TileColor" content="#ffffff">
+
+        <head-placeholder token="{{ placeholder_token }}">
+        <title>{{ head_title|safe_join(' | ') }}</title>
+        <css-placeholder token="{{ placeholder_token }}">
+        <js-placeholder token="{{ placeholder_token }}">
+    </head>
+
+    <body{{attributes.addClass(classes,is_front?'page-home')}} itemscope itemtype="http://schema.org/WebPage">
+        <a href="#main-content" class="lnk-skip">
+            {{ 'Skip to content'|t }}
+        </a>
+        {{ page_top }}
+
+        <div class="page-banner">
+            {% set main_nav = page.main_nav|render %}
+            {% set top_nav = page.top_nav|render %}
+
+            {% if page.header %}
+            <header id="header" class="main-head">
+                <div class="container">
+                    <div class="col12">
+                        {{ page.header }}
+                        <button class="btn-menu" aria-controls="#menu" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+                        <button class="btn-search" aria-controls="#search" aria-expanded="false" aria-label="Toggle search">Search</button>
+                    </div>
+                </div>
+
+                <nav class="site-nav">
+                    {% if page.main_nav %}
+                        {{ page.main_nav }}
+                    {% endif %}
+                </nav>
+            </header>
+            {% endif %}
+
+
+            <div id="search" class="main-search-wrap">
+                <button class="btn-close-search" aria-controls="#search" aria-expanded="false" aria-label="Close search">&times;</button>
+                <form action="/search" class="main-search">
+                    <fieldset>
+                        <input type="search" class="field-search" required name="q" id="q">
+                        <label for="q">Search</label>
+                        <button type="submit" class="btn-submit-search" aria-label="Submit search query">Search</button>
+                    </fieldset>
+                </form>
+            </div>
+
+            {% if page.banner %}
+            <div class="top-banner">
+                <div class="container">
+                    <div class="col8 m-3_4">
+                        {% if not is_front %}
+                            {{ page.breadcrumb }}
+                        {% endif %}
+
+                        {% if view_title %}
+                            <h1 itemprop="name">{{ view_title }}</h1>
+                        {% else %}
+                            <h1 itemprop="name">{{ node.label }}</h1>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div id="main" class="content-wrap">
+            {{ page }}
+        </div>
+
+        {% if not logged_in %}
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        {% endif %}
+
+        {{ page_bottom }}
+        <js-bottom-placeholder token="{{ placeholder_token }}">
+    </body>
+</html>

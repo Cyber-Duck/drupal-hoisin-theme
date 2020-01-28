@@ -127,17 +127,30 @@ let topBanner = `/*
  * @version v<%= pkg.version %>
  */
 
-$(document).ready(function () {
+(function ($, Drupal, drupalSettings) {
+    Drupal.behaviors.se_behaviors = {
+        attach: function (settings) {
 `;
+
 
 /*
  * End of JS file
  */
 let bottomBanner = `
+        }
+    };
+})(jQuery, Drupal, drupalSettings);`;
+
+
+/*
+ * End of JS file
+ */ 
+let timeStamp = `
 /*
 * Last updated: ${generateDate(new Date())}
 */
-});`;
+`;
+
 
 /*
  * Concatenate and transpile JS files
@@ -153,6 +166,7 @@ function js () {
             this.emit('end');
         })
         .pipe(header(topBanner, {pkg: pkg}))
+        .pipe(footer(bottomBanner))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(config.jsDest));
 };
@@ -166,7 +180,7 @@ function compress () {
     return gulp.src(config.jsDest + '/scripts.js')
         .pipe(rename('scripts.min.js'))
         .pipe(uglify())
-        .pipe(footer(bottomBanner))
+        .pipe(footer(timeStamp))
         .pipe(gulp.dest(config.jsDest));
 };
 

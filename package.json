@@ -1,7 +1,7 @@
 {
-  "name": "febs",
-  "version": "1.2.0",
-  "description": "Cyber-Duck front end basic build system.",
+  "name": "drupal-hoisin-theme",
+  "version": "1.0.0",
+  "description": "Hoisin starter theme for Drupal. Hoisin is a very simple responsive front end mini framework made to kick start your web project, written in Sass.",
   "main": "Gulpfile.js",
   "author": "Ramon Lapenta <ramon@cyber-duck.co.uk>",
   "license": "ISC",

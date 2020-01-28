@@ -4,7 +4,9 @@
  * @version v1.2.0
  */
 
-$(document).ready(function () {
+(function ($, Drupal, drupalSettings) {
+    Drupal.behaviors.se_behaviors = {
+        attach: function (settings) {
 "use strict";
 
 // Main navigation
@@ -39,4 +41,7 @@ var scrollToHash = function scrollToHash(target) {
     }, 500, null);
   }
 };
+        }
+    };
+})(jQuery, Drupal, drupalSettings);
 //# sourceMappingURL=scripts.js.map
