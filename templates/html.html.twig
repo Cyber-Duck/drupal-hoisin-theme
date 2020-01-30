@@ -35,8 +35,13 @@
 <html{{html_attributes}}>
     <head>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <meta name="application-name" content="Sport England">
-        <meta name="msapplication-TileColor" content="#ffffff">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <meta name="application-name" content="{{ head_title|safe_join(' | ') }}">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
         <head-placeholder token="{{ placeholder_token }}">
         <title>{{ head_title|safe_join(' | ') }}</title>
@@ -69,20 +74,19 @@
                         {{ page.main_nav }}
                     {% endif %}
                 </nav>
+
+                <div id="search" class="main-search-wrap">
+                    <button class="btn-close-search" aria-controls="#search" aria-expanded="false" aria-label="Close search">&times;</button>
+                    <form action="/search" class="main-search">
+                        <fieldset>
+                            <input type="search" class="field-search" required name="q" id="q">
+                            <label for="q">Search</label>
+                            <button type="submit" class="btn-submit-search" aria-label="Submit search query">Search</button>
+                        </fieldset>
+                    </form>
+                </div>
             </header>
             {% endif %}
-
-
-            <div id="search" class="main-search-wrap">
-                <button class="btn-close-search" aria-controls="#search" aria-expanded="false" aria-label="Close search">&times;</button>
-                <form action="/search" class="main-search">
-                    <fieldset>
-                        <input type="search" class="field-search" required name="q" id="q">
-                        <label for="q">Search</label>
-                        <button type="submit" class="btn-submit-search" aria-label="Submit search query">Search</button>
-                    </fieldset>
-                </form>
-            </div>
 
             {% if page.banner %}
             <div class="top-banner">
@@ -107,6 +111,7 @@
             {{ page }}
         </div>
 
+        {# Maybe find a better way to do this #}
         {% if not logged_in %}
             <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         {% endif %}

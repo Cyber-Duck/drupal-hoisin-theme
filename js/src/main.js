@@ -1,5 +1,5 @@
 // Main navigation
-jQuery('.btn-menu').on('click', function (e) {
+jQuery(document).once('nav-click').on('click', '.btn-menu', function (e) {
     e.preventDefault();
     jQuery('body').toggleClass('menu-open');
 });
