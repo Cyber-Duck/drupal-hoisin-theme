@@ -128,7 +128,7 @@ let topBanner = `/*
  */
 
 (function ($, Drupal, drupalSettings) {
-    Drupal.behaviors.se_behaviors = {
+    Drupal.behaviors.hoisin_behaviors = {
         attach: function (settings) {
 `;
 
