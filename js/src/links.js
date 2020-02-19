@@ -1,5 +1,5 @@
 // Links
-jQuery(document).once('scroll-click').on('click', '.ascroll', function (e) {
+jQuery(document).once('scroll-click').on('click', '.ascroll', (e) => {
     e.preventDefault();
     let target = jQuery(this).attr('href');
     scrollToHash(target);

@@ -1,23 +1,27 @@
 /*
- * febs
- * Cyber-Duck front end basic build system.
- * @version v1.2.0
+ * drupal-hoisin-theme
+ * Hoisin starter theme for Drupal. Hoisin is a very simple responsive front end mini framework made to kick start your web project, written in Sass.
+ * @version v1.0.0
  */
 
 (function ($, Drupal, drupalSettings) {
-    Drupal.behaviors.se_behaviors = {
+    Drupal.behaviors.hoisin_behaviors = {
         attach: function (settings) {
 "use strict";
 
 // Main navigation
-jQuery('.btn-menu').on('click', function (e) {
+jQuery(document).once('nav-click').on('click touchend', '.btn-menu', function (e) {
   e.preventDefault();
   jQuery('body').toggleClass('menu-open');
-}); // Links
+});
+"use strict";
 
-jQuery(document).on('click', '.ascroll', function (e) {
+var _this = void 0;
+
+// Links
+jQuery(document).once('scroll-click').on('click', '.ascroll', function (e) {
   e.preventDefault();
-  var target = jQuery(this).attr('href');
+  var target = jQuery(_this).attr('href');
   scrollToHash(target);
 });
 

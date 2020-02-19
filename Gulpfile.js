@@ -159,8 +159,10 @@ function js () {
     'use strict';
     return gulp.src(jsFiles)
         .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(concat('scripts.js'))
-        .pipe(babel())
         .on('error', (e) => {
             console.log('>>> ERROR', e);
             this.emit('end');
