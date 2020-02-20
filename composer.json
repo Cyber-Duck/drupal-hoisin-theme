@@ -1,12 +1,12 @@
 {
   "name": "drupal/hoisin",
-  "description": "Built to use HOisin, a very simple responsive front end mini framework made to kick start your web project, written in Sass.",
+  "description": "Built to use Hoisin.scss, a very simple responsive front end mini framework made to kick start your web project, written in Sass.",
   "type": "drupal-theme",
   "license": "GPL-2.0",
   "homepage": "https://github.com/Cyber-Duck/drupal-hoisin-theme",
   "authors": [
     {
-      "name": "Cyber Duck Ltd (cyberduck_uk)",
+      "name": "Cyber-Duck Ltd (cyberduck_uk)",
       "homepage": "https://www.cyber-duck.co.uk/",
       "role": "Maintainer"
     },
